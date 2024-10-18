@@ -1,5 +1,5 @@
 // the mainLoader
-
+console.log("hi")
 let myMainLoadertext = new SplitType('.theMainLoaderSpan',{type:"chars"})
 let loaderMainDivs = document.querySelectorAll('.theMianLoader .textContainer div')
 let loaderMain = document.querySelector('.theMianLoader')

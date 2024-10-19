@@ -21,6 +21,13 @@
                 <button data-loader="n" class="">stop</button>
             </div>
         </div>
+        <div class="box-crypt">
+            <p>website mode </p>
+            <div>
+                <button data-mode="crypt" class="active">crypt</button>
+                <button data-mode="decrypt">decrypt</button>
+            </div>
+        </div>
     </div>
     <div class="theMianLoader">
         <div class="textContainer">
@@ -92,12 +99,19 @@
                     <div class="bottom">
                         <div class="menu">
                             <p>choose your methed <i class="fa-solid fa-chevron-up"></i></p>
-                            <ul> 
-                                <li data-method="1">method 1 - Miroir</li>
-                                <li data-method="2" >method 2 - Affine</li>
-                                <li data-method="3">method 3 - decalage a gauche</li>
-                                <li data-method="4">method 4 - decalage a droite</li>
-                                <li data-method="5">method 5 - cesar</li>
+                            <ul class="crypt"> 
+                                <li data-method="c1">crypting - Mirror</li>
+                                <li data-method="c2" >crypting  - Affine</li>
+                                <li data-method="c3">crypting - left shift</li>
+                                <li data-method="c4">crypting - right shift</li>
+                                <li data-method="c5">crypting - cesar</li>
+                            </ul>
+                            <ul class="decrypt"> 
+                                <li data-method="d1">Decrypting - Mirror</li>
+                                <li data-method="d2" >Decrypting - Affine</li>
+                                <li data-method="d3">Decrypting - left shift</li>
+                                <li data-method="d4">Decrypting - left right</li>
+                                <li data-method="d5">Decrypting - cesar</li>
                             </ul>
                         </div>
                         <button>execute</button>

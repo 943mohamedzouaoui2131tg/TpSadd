@@ -83,19 +83,19 @@ ul {
   right: -30px;
   cursor: pointer;
 }
-.settingSide .box {
+.settingSide .box , .settingSide .box-crypt {
   padding: 20px 15px;
-  height: 40px;
+  height: 100px;
   color: #333;
 }
-.settingSide .box p {
+.settingSide .box p,.settingSide .box-crypt p {
   font-weight: 600;
     text-transform: capitalize;
     font-size: 17px;
     margin-bottom: 25px;
     position: relative;
 }
-.settingSide .box p::after {
+.settingSide .box p::after ,.settingSide .box-crypt p::after {
   content: "";
   position: absolute;
   width: 70%;
@@ -104,12 +104,12 @@ ul {
   bottom: -10px;
   left: 0;
 }
-.settingSide .box div {
+.settingSide .box div ,.settingSide .box-crypt div {
       display: flex;
     gap: 12px;
 }
 
-.settingSide .box div button {
+.settingSide .box div button,.settingSide .box-crypt div button {
   flex: 1;
   padding: 8px;
   border: 1px solid #777;
@@ -122,10 +122,11 @@ ul {
   transition: 0.3s;
   color: #333;
 }
-.settingSide .box div button.active {
+.settingSide .box div button.active ,.settingSide .box-crypt div button.active {
   border: none;
 background-color: #fdb863;
 }
+
 
 /* setting */
 /* main loader */

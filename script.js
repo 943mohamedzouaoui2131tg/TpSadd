@@ -5,6 +5,10 @@ let loaderMainDivs = document.querySelectorAll('.theMianLoader .textContainer di
 let loaderMain = document.querySelector('.theMianLoader')
 let willrun = localStorage.getItem("loader")
 let listOfBtnSetting = document.querySelectorAll('.settingSide .box div button')
+
+
+
+
 if (willrun !== null) {
         listOfBtnSetting.forEach((e)=> {
             e.classList.remove('active')
@@ -119,45 +123,100 @@ let login = document.querySelector('.login')
 let loginPass = document.querySelector('.landing .container .loginPass')
 let pchoise = document.querySelector('.landing .container .loginPass .left .menu p')
 let pchoiseIcon = document.querySelector('.landing .container .loginPass .left .menu p i')
-let ulchoise = document.querySelector('.landing .container .loginPass div.left .bottom ul')
-let ulLiChoise = document.querySelectorAll('.landing .container .loginPass div.left .bottom ul li')
+// crypting
+let ulchoisecrypt = document.querySelector('.landing .container .loginPass div.left .bottom ul.crypt')
+let ulLiChoisecrypt = document.querySelectorAll('.landing .container .loginPass div.left .bottom ul.crypt li')
+// decrypting
+let ulchoisecderypt = document.querySelector('.landing .container .loginPass div.left .bottom ul.decrypt')
+let ulLiChoisedecrypt = document.querySelectorAll('.landing .container .loginPass div.left .bottom ul.decrypt li')
+// crypt and decrypt 
+let listOfBtnSettingOfDecrypt = document.querySelectorAll('.settingSide .box-crypt div button')
 let numOfMethod
-pchoise.addEventListener("click",() => {
-    ulchoise.classList.toggle('active')
-    if (ulchoise.classList.contains('active')) {
-        pchoiseIcon.classList.remove('fa-chevron-up')
-        pchoiseIcon.classList.add('fa-chevron-down')
-    } else {
+let modeOfcrypting = "crypt"
+listOfBtnSettingOfDecrypt.forEach((e) => {
+    e.onclick = function(e) {
+        listOfBtnSettingOfDecrypt.forEach((ele)=> {
+            ele.classList.remove("active")
+        })
+        e.target.classList.add("active")
+        modeOfcrypting = e.target.dataset.mode
+        ulchoisecderypt.classList.remove('active')
+        ulchoisecrypt.classList.remove('active')
         pchoiseIcon.classList.remove('fa-chevron-down')
         pchoiseIcon.classList.add('fa-chevron-up')
+    }
+})
+pchoise.addEventListener("click",() => {
+    if (modeOfcrypting === "crypt") {
+        ulchoisecrypt.classList.toggle('active')
+        if (ulchoisecrypt.classList.contains('active')) {
+            pchoiseIcon.classList.remove('fa-chevron-up')
+            pchoiseIcon.classList.add('fa-chevron-down')
+        } else {
+            pchoiseIcon.classList.remove('fa-chevron-down')
+            pchoiseIcon.classList.add('fa-chevron-up')
+        } 
+    }    
+    else { ulchoisecderypt.classList.toggle('active')
+        if (ulchoisecderypt.classList.contains('active')) {
+            pchoiseIcon.classList.remove('fa-chevron-up')
+            pchoiseIcon.classList.add('fa-chevron-down')
+        } else {
+            pchoiseIcon.classList.remove('fa-chevron-down')
+            pchoiseIcon.classList.add('fa-chevron-up')
+        }
     }
 })
 pchoise.onclick = function(e) {
     e.stopPropagation();
     
 }
-ulchoise.onclick = function(e) {
+ulchoisecrypt.onclick = function(e) {
     e.stopPropagation();
     
 }
+ulchoisecderypt.onclick = function(e) {
+    e.stopPropagation();
+    
+}
+// ########################
 window.addEventListener('click' ,function(e) {
-    if (ulchoise.classList.contains('active')) {
-        if(e.target !== ulchoise) {
+    if (ulchoisecrypt.classList.contains('active')) {
+        if(e.target !== ulchoisecrypt) {
             pchoiseIcon.classList.remove('fa-chevron-down')
             pchoiseIcon.classList.add('fa-chevron-up')
-            ulchoise.classList.remove('active')
+            ulchoisecrypt.classList.remove('active')
         }
     }
 })
-ulLiChoise.forEach((ele) => {
+ulLiChoisecrypt.forEach((ele) => {
     ele.onclick = function() {
-        ulLiChoise.forEach((e) => {
+        ulLiChoisecrypt.forEach((e) => {
             e.classList.remove('active')
         })
         this.classList.add('active')
         numOfMethod = this.dataset.method
     }
 })
+window.addEventListener('click' ,function(e) {
+    if (ulchoisecderypt.classList.contains('active')) {
+        if(e.target !== ulchoisecderypt) {
+            pchoiseIcon.classList.remove('fa-chevron-down')
+            pchoiseIcon.classList.add('fa-chevron-up')
+            ulchoisecderypt.classList.remove('active')
+        }
+    }
+})
+ulLiChoisedecrypt.forEach((ele) => {
+    ele.onclick = function() {
+        ulLiChoisedecrypt.forEach((e) => {
+            e.classList.remove('active')
+        })
+        this.classList.add('active')
+        numOfMethod = this.dataset.method
+    }
+})
+// ################################3
 let btnSumbitCryp = document.querySelector('.landing .container .loginPass div.left .bottom button')
 let textareaLeft = document.querySelector('.landing .container .loginPass div.left form textarea')
 let textareaRight = document.querySelector('.landing .container .loginPass div.right form textarea')
@@ -305,6 +364,20 @@ divIconSetting.addEventListener("click",function(e) {
         })
     }
 })
+settingSide.addEventListener('click',(e)=> {
+    e.stopPropagation()
+})
+window.addEventListener('click',function(e) {
+    if (e.target !== settingSide ) {
+        settingSide.classList.remove('active')
+        iconSetting.classList.remove('fa-spin')
+        gsap.to(settingSide,{
+            x:0,
+            duration:1,
+            ease:"power3.out",
+        })
+    }
+})
 listOfBtnSetting.forEach((ele)=> {
     ele.addEventListener("click",(e)=> {
         listOfBtnSetting.forEach((e) => {
@@ -326,3 +399,4 @@ listOfBtnSetting.forEach((ele)=> {
 
 
 // end maim Loader
+// crypt and decrypt

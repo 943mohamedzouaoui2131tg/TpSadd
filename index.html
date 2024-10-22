@@ -23,13 +23,6 @@
                 <button data-loader="n" class="">stop</button>
             </div>
         </div>
-        <div class="box-crypt">
-            <p>website mode </p>
-            <div>
-                <button data-mode="crypt" class="active">crypt</button>
-                <button data-mode="decrypt">decrypt</button>
-            </div>
-        </div>
     </div>
     <div class="theMianLoader">
         <div class="textContainer">
@@ -94,7 +87,32 @@
         <div class="container">
             <div class="loginPass">
                 <div class="left">
-                    <p>put your uncrypted message here </p>
+                    <div class="top">
+                        <p>put your uncrypted message here </p>
+                        <div class="question">
+                            <div class="icon">
+                                <i class="fa-solid fa-question"></i>
+                            </div>
+                            <div class="box takeaffine">
+                                <p>please enter values for Affine algorithm to start</p>
+                                <div class="A">
+                                    <p>A :</p>
+                                    <input type="text">
+                                </div>
+                                <div class="B">
+                                    <p>B :</p>
+                                    <input type="text">
+                                </div>
+                            </div>
+                            <div class="box takecesar">
+                                <p>please enter a value for Cesar algorithm to start</p>
+                                <div class="A">
+                                    <p>A :</p>
+                                    <input type="text">
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
                     <form action="">
                         <textarea name=""  id="" placeholder="" ></textarea>
                     </form>
@@ -102,29 +120,31 @@
                         <div class="menu">
                             <p>choose your methed <i class="fa-solid fa-chevron-up"></i></p>
                             <ul class="crypt"> 
-                                <li data-method="c1">crypting - Mirror</li>
-                                <li data-method="c2" >crypting  - Affine</li>
-                                <li data-method="c3">crypting - left shift</li>
-                                <li data-method="c4">crypting - right shift</li>
-                                <li data-method="c5">crypting - cesar</li>
-                            </ul>
-                            <ul class="decrypt"> 
-                                <li data-method="d1">Decrypting - Mirror</li>
-                                <li data-method="d2" >Decrypting - Affine</li>
-                                <li data-method="d3">Decrypting - left shift</li>
-                                <li data-method="d4">Decrypting - left right</li>
-                                <li data-method="d5">Decrypting - cesar</li>
+                                <li data-method="1"> Mirror - </li>
+                                <li data-method="2" >Affine - </li>
+                                <li data-method="3">left shift - </li>
+                                <li data-method="4">right shift - </li>
+                                <li data-method="5">cesar - </li>
                             </ul>
                         </div>
                         <button>execute</button>
                     </div>
                 </div>
                 <div class="right">
-                    <p>the crypted message</p>
-                    <form action="">
-                        <textarea name=""  id="" readonly></textarea>
-                    </form>
-                    <div class="bottom"></div>
+                    <div class="textleft">
+                        <p>the crypted message </p>
+                        <form action="">
+                            <textarea name=""  id="" readonly></textarea>
+                        </form>
+                        <div class="space"></div>
+                    </div>
+                    <div class="textright">
+                        <p>the deypted message</p>
+                        <form action="">
+                            <textarea name=""  id="" readonly></textarea>
+                        </form>
+                        <div class="space"></div>
+                    </div>
                 </div>
             </div>
             <div  class="login">

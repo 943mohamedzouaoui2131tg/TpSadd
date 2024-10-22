@@ -127,27 +127,13 @@ let pchoiseIcon = document.querySelector('.landing .container .loginPass .left .
 let ulchoisecrypt = document.querySelector('.landing .container .loginPass div.left .bottom ul.crypt')
 let ulLiChoisecrypt = document.querySelectorAll('.landing .container .loginPass div.left .bottom ul.crypt li')
 // decrypting
-let ulchoisecderypt = document.querySelector('.landing .container .loginPass div.left .bottom ul.decrypt')
-let ulLiChoisedecrypt = document.querySelectorAll('.landing .container .loginPass div.left .bottom ul.decrypt li')
+
 // crypt and decrypt 
-let listOfBtnSettingOfDecrypt = document.querySelectorAll('.settingSide .box-crypt div button')
+
 let numOfMethod
-let modeOfcrypting = "crypt"
-listOfBtnSettingOfDecrypt.forEach((e) => {
-    e.onclick = function(e) {
-        listOfBtnSettingOfDecrypt.forEach((ele)=> {
-            ele.classList.remove("active")
-        })
-        e.target.classList.add("active")
-        modeOfcrypting = e.target.dataset.mode
-        ulchoisecderypt.classList.remove('active')
-        ulchoisecrypt.classList.remove('active')
-        pchoiseIcon.classList.remove('fa-chevron-down')
-        pchoiseIcon.classList.add('fa-chevron-up')
-    }
-})
+
 pchoise.addEventListener("click",() => {
-    if (modeOfcrypting === "crypt") {
+
         ulchoisecrypt.classList.toggle('active')
         if (ulchoisecrypt.classList.contains('active')) {
             pchoiseIcon.classList.remove('fa-chevron-up')
@@ -155,17 +141,8 @@ pchoise.addEventListener("click",() => {
         } else {
             pchoiseIcon.classList.remove('fa-chevron-down')
             pchoiseIcon.classList.add('fa-chevron-up')
-        } 
-    }    
-    else { ulchoisecderypt.classList.toggle('active')
-        if (ulchoisecderypt.classList.contains('active')) {
-            pchoiseIcon.classList.remove('fa-chevron-up')
-            pchoiseIcon.classList.add('fa-chevron-down')
-        } else {
-            pchoiseIcon.classList.remove('fa-chevron-down')
-            pchoiseIcon.classList.add('fa-chevron-up')
-        }
-    }
+        }  
+
 })
 pchoise.onclick = function(e) {
     e.stopPropagation();
@@ -175,10 +152,7 @@ ulchoisecrypt.onclick = function(e) {
     e.stopPropagation();
     
 }
-ulchoisecderypt.onclick = function(e) {
-    e.stopPropagation();
-    
-}
+
 // ########################
 window.addEventListener('click' ,function(e) {
     if (ulchoisecrypt.classList.contains('active')) {
@@ -189,6 +163,10 @@ window.addEventListener('click' ,function(e) {
         }
     }
 })
+let questionIcon = document.querySelector(".landing .container .loginPass div.left .top .question .icon")
+let takeaffine = document.querySelector('.landing .container .loginPass div.left .question .box.takeaffine')
+let takecesar = document.querySelector('.landing .container .loginPass div.left .question .box.takecesar')
+
 ulLiChoisecrypt.forEach((ele) => {
     ele.onclick = function() {
         ulLiChoisecrypt.forEach((e) => {
@@ -196,26 +174,29 @@ ulLiChoisecrypt.forEach((ele) => {
         })
         this.classList.add('active')
         numOfMethod = this.dataset.method
-    }
-})
-window.addEventListener('click' ,function(e) {
-    if (ulchoisecderypt.classList.contains('active')) {
-        if(e.target !== ulchoisecderypt) {
-            pchoiseIcon.classList.remove('fa-chevron-down')
-            pchoiseIcon.classList.add('fa-chevron-up')
-            ulchoisecderypt.classList.remove('active')
+        if (this.dataset.method === "2") {
+            questionIcon.classList.add("active")
+        } else if (this.dataset.method === "5") {
+            questionIcon.classList.add("active")
+        } else {
+            questionIcon.classList.remove("active")
+            takeaffine.classList.remove('active')
+            takecesar.classList.remove('active')
         }
     }
 })
-ulLiChoisedecrypt.forEach((ele) => {
-    ele.onclick = function() {
-        ulLiChoisedecrypt.forEach((e) => {
-            e.classList.remove('active')
-        })
-        this.classList.add('active')
-        numOfMethod = this.dataset.method
+questionIcon.addEventListener('click',function() {
+
+    if (numOfMethod === "2") {
+        takeaffine.classList.toggle('active')
+    } else if (numOfMethod === '5') {
+        takecesar.classList.toggle('active')
     }
 })
+
+
+
+
 // ################################3
 let btnSumbitCryp = document.querySelector('.landing .container .loginPass div.left .bottom button')
 let textareaLeft = document.querySelector('.landing .container .loginPass div.left form textarea')
@@ -226,66 +207,26 @@ btnSumbitCryp.addEventListener('click', function() {
     }
 })
 
-function miroir(theText) {
-    let theTextsting = new String(theText)
-    let words = []
-    words = theTextsting.split(" ")
-    let reverse = words.map(function(ele) {
-        let word = []
-        word = ele.split("")
-        let i = Math.floor(word.length / 2)
-        for (j = 0 ; j <= i ; j++ ) {
-            let a = word[j]
-            word[j] = word[ele.length - 1 - j]
-            word[ele.length - 1 - j] = a
-        }
-        ele = word.join("")
-        return ele
-    } )
-    console.log(reverse.join(" "))
-}
+// function miroir(theText) {
+//     let theTextsting = new String(theText)
+//     let words = []
+//     words = theTextsting.split(" ")
+//     let reverse = words.map(function(ele) {
+//         let word = []
+//         word = ele.split("")
+//         let i = Math.floor(word.length / 2)
+//         for (j = 0 ; j <= i ; j++ ) {
+//             let a = word[j]
+//             word[j] = word[ele.length - 1 - j]
+//             word[ele.length - 1 - j] = a
+//         }
+//         ele = word.join("")
+//         return ele
+//     } )
+//     console.log(reverse.join(" "))
+// }
 // miroir('mohamed zouaoui')
-
-function decalgeAdroite(theText) {
-    let theTextsting = new String(theText)
-    let words = [];
-    words = theTextsting.split(" ")
-    let reverseAdoite = words.map(function(ele) {
-        let word = []
-        word = ele.split("")
-        let i = word.length
-        let fin = word[i - 1]
-        for (j = i - 1 ;j >= 1; j--) {
-            let a  = word[j]
-            word[j] = word[j - 1]
-        }
-        word[0] = fin
-        return word.join("")
-    })
-    console.log(reverseAdoite.join(" "))
-}
-// decalgeAdroite("abc bcfds mohamed")
-
-function decalgeAgauche(theText) {
-    let theTextsting = new String(theText)
-    let words = [];
-    words = theTextsting.split(" ")
-    let reverseAdoite = words.map(function(ele) {
-        let word = []
-        word = ele.split("")
-        let i = word.length
-        let start = word[0]
-        for (j = 0 ;j < i -1 ; j++) {
-            let a  = word[j]
-            word[j] = word[j + 1]
-        }
-        word[i -1 ] = start
-        return word.join("")
-    })
-    console.log(reverseAdoite.join(" "))
-}
-// decalgeAgauche('mohmaed zouaoui')
-// 
+    //   let word = []
 
 //  the responsive start
 // let startHeight = window.innerHeight
